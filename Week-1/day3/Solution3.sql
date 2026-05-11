@@ -56,7 +56,14 @@ WHERE e.course_id IS NULL;
 
 SELECT s.student_name, e.course_id, e.enrollment_date
 FROM students s
-FULL OUTER JOIN enrollments e
+LEFT JOIN enrollments e
+ON s.student_id = e.student_id
+
+UNION
+
+SELECT s.student_name, e.course_id, e.enrollment_date
+FROM students s
+RIGHT JOIN enrollments e
 ON s.student_id = e.student_id;
 
 
